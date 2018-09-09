@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Numerics;
+using _01_VectorEditor.Primitives;
 
 namespace _01_VectorEditor.Drawing
 {
     public class LineDrawingStrategy : AbstractDrawingStrategy
     {
-        public override void Draw(Vector2 point1, Vector2 point2)
+        public override void Draw(Shape shape)
         {
-            Console.WriteLine($"LineSegment: {point1}, {point2}");
+            // Уродливое приведение к типу, но как лучше, не знаю
+            var lineSegment = (LineSegment)shape;
+            Console.WriteLine($"LineSegment: {lineSegment.Point1}, {lineSegment.Point2}");
         }
     }
 }

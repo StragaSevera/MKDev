@@ -11,19 +11,12 @@ namespace _01_VectorEditor.Primitives
     {
         public Vector2 Point1 { get; }
         public Vector2 Point2 { get; }
-        private readonly RectangleDrawingStrategy drawingStrategy;
 
-        public Rectangle(Vector2 point1, Vector2 point2)
+        public Rectangle(Vector2 point1, Vector2 point2,
+            AbstractDrawingStrategy drawingStrategy) : base(drawingStrategy)
         {
             Point1 = point1;
             Point2 = point2;
-
-            drawingStrategy = new RectangleDrawingStrategy();
-        }
-
-        public override void Draw()
-        {
-            drawingStrategy.Draw(Point1, Point2);
         }
 
         public override float GetDistanceFrom(Vector2 point)

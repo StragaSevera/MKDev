@@ -1,9 +1,10 @@
 ﻿using System.Numerics;
+using _01_VectorEditor.Primitives;
 
 namespace _01_VectorEditor.Drawing
 {
     public abstract class AbstractDrawingStrategy
     {
-        public abstract void Draw(Vector2 point1, Vector2 point2);
+        public abstract void Draw(Shape shape);
     }
 }
