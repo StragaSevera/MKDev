@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace _01_VectorEditor
+namespace _01_VectorEditor.Primitives
 {
     public abstract class Shape
     {

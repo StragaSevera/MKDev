@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using _01_VectorEditor.Drawing;
+using _01_VectorEditor.Utils;
 
-namespace _01_VectorEditor
+namespace _01_VectorEditor.Primitives
 {
     public class Rectangle : Shape
     {

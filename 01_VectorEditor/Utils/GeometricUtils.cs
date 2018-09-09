@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 
-namespace _01_VectorEditor
+namespace _01_VectorEditor.Utils
 {
     public static class GeometricUtils
     {

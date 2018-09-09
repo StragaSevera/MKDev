@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using _01_VectorEditor.Primitives;
 
 namespace _01_VectorEditor
 {
