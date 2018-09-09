@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using _01_VectorEditor.Drawing.WPF;
 using _01_VectorEditor.Primitives;
 
 namespace _01_VectorEditor
@@ -12,7 +13,7 @@ namespace _01_VectorEditor
     {
         private static void Main(string[] args)
         {
-            var image = new Image();
+            var image = new Image(new WpfDrawingStrategyFactory());
             image.AddLineSegment(new Vector2(0, 0), new Vector2(2, 3));
             image.AddRectangle(new Vector2(-1, -1), new Vector2(5, 5));
             image.Draw();

@@ -2,14 +2,18 @@
 using System.Linq;
 using System.Numerics;
 using _01_VectorEditor.Drawing;
+using _01_VectorEditor.Drawing.WPF;
 using _01_VectorEditor.Primitives;
 
 namespace _01_VectorEditor
 {
     public class Image
     {
-        public Image()
+        private AbstractDrawingStrategyFactory drawingFactory;
+
+        public Image(AbstractDrawingStrategyFactory drawingFactory)
         {
+            this.drawingFactory = drawingFactory;
             Shapes = new List<Shape>();
         }
 
@@ -55,14 +59,14 @@ namespace _01_VectorEditor
             }
         }
 
-        private static LineSegment CreateSegment(Vector2 point1, Vector2 point2)
+        private LineSegment CreateSegment(Vector2 point1, Vector2 point2)
         {
-            return new LineSegment(point1, point2, new LineDrawingStrategy());
+            return new LineSegment(point1, point2, drawingFactory.LineSegmentDrawingStrategy());
         }
 
-        private static Rectangle CreateRectangle(Vector2 point1, Vector2 point2)
+        private Rectangle CreateRectangle(Vector2 point1, Vector2 point2)
         {
-            return new Rectangle(point1, point2, new RectangleDrawingStrategy());
+            return new Rectangle(point1, point2, drawingFactory.RectangleDrawingStrategy());
         }
 
     }
