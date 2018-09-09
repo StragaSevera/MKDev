@@ -4,6 +4,8 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using _01_VectorEditor.Drawing;
+using _01_VectorEditor.Drawing.WinForms;
 using _01_VectorEditor.Drawing.WPF;
 using _01_VectorEditor.Primitives;
 
@@ -13,7 +15,24 @@ namespace _01_VectorEditor
     {
         private static void Main(string[] args)
         {
-            var image = new Image(new WpfDrawingStrategyFactory());
+            AbstractDrawingStrategyFactory factory;
+            Console.Write("Enter 1 for WPF, 2 for WinForms: ");
+            string response = Console.ReadLine();
+            if (!int.TryParse(response, out int responseInt))
+                return;
+            switch (responseInt)
+            {
+                case 1:
+                    factory = new WpfDrawingStrategyFactory();
+                    break;
+                case 2:
+                    factory = new WinFormsDrawingStrategyFactory();
+                    break;
+                default:
+                    return;
+            }
+
+            var image = new Image(factory);
             image.AddLineSegment(new Vector2(0, 0), new Vector2(2, 3));
             image.AddRectangle(new Vector2(-1, -1), new Vector2(5, 5));
             image.Draw();

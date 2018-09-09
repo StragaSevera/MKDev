@@ -47,6 +47,9 @@
   <ItemGroup>
     <Compile Include="Drawing\AbstractDrawingStrategy.cs" />
     <Compile Include="Drawing\AbstractDrawingStrategyFactory.cs" />
+    <Compile Include="Drawing\WinForms\WinFormsDrawingStrategyFactory.cs" />
+    <Compile Include="Drawing\WinForms\WinFormsLineSegmentDrawingStrategy.cs" />
+    <Compile Include="Drawing\WinForms\WinFormsRectangleDrawingStrategy.cs" />
     <Compile Include="Drawing\WPF\WpfDrawingStrategyFactory.cs" />
     <Compile Include="Utils\GeometricUtils.cs" />
     <Compile Include="Image.cs" />
