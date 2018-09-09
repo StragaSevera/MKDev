@@ -14,9 +14,9 @@ namespace _01_VectorEditor
         public List<Shape> Shapes { get; }
 
         // И что, с каждым новым классом фигуры растить методы?..
-        public void AddLine(Vector2 point1, Vector2 point2)
+        public void AddLineSegment(Vector2 point1, Vector2 point2)
         {
-            Shapes.Add(new Line(point1, point2));
+            Shapes.Add(new LineSegment(point1, point2));
         }
 
         public void AddRectangle(Vector2 point1, Vector2 point2)
@@ -42,8 +42,8 @@ namespace _01_VectorEditor
             switch (shape)  // Уродливо. Надо бы заюзать фабрику, но как?.. Передавать ей 
                             // enum - еще более уродливо
             {
-                case Line l:
-                    Shapes.Insert(index, new Line(point1, point2));
+                case LineSegment l:
+                    Shapes.Insert(index, new LineSegment(point1, point2));
                     break;
                 case Rectangle r:
                     Shapes.Insert(index, new Rectangle(point1, point2));

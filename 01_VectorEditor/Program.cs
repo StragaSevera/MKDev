@@ -9,10 +9,10 @@ namespace _01_VectorEditor
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var image = new Image();
-            image.AddLine(new Vector2(0, 0), new Vector2(2, 3));
+            image.AddLineSegment(new Vector2(0, 0), new Vector2(2, 3));
             image.AddRectangle(new Vector2(-1, -1), new Vector2(5, 5));
             image.Draw();
 
