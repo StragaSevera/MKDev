@@ -45,16 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractDrawingStrategy.cs" />
-    <Compile Include="GeometricUtils.cs" />
+    <Compile Include="Drawing\AbstractDrawingStrategy.cs" />
+    <Compile Include="Utils\GeometricUtils.cs" />
     <Compile Include="Image.cs" />
-    <Compile Include="LineSegment.cs" />
-    <Compile Include="LineDrawingStrategy.cs" />
+    <Compile Include="Primitives\LineSegment.cs" />
+    <Compile Include="Drawing\LineDrawingStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rectangle.cs" />
-    <Compile Include="RectangleDrawingStrategy.cs" />
-    <Compile Include="Shape.cs" />
+    <Compile Include="Primitives\Rectangle.cs" />
+    <Compile Include="Drawing\RectangleDrawingStrategy.cs" />
+    <Compile Include="Primitives\Shape.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
