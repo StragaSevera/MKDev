@@ -4,7 +4,7 @@ using _01_VectorEditor.Primitives;
 
 namespace _01_VectorEditor.Drawing
 {
-    public class LineDrawingStrategy : AbstractDrawingStrategy
+    public class LineSegmentDrawingStrategy : AbstractDrawingStrategy
     {
         public override void Draw(Shape shape)
         {
