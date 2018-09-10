@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>_03_Calculus</RootNamespace>
     <AssemblyName>03_Calculus</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,6 +46,10 @@
     <Compile Include="Integrator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\IntegrationStrategy.cs" />
+    <Compile Include="Strategies\RectangleStrategy.cs" />
+    <Compile Include="Strategies\SimpsonStragegy.cs" />
+    <Compile Include="Strategies\TrapezoidStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
