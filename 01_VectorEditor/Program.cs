@@ -15,7 +15,7 @@ namespace _01_VectorEditor
     {
         private static void Main(string[] args)
         {
-            AbstractDrawingStrategyFactory factory;
+            AbstractRenderer renderer;
             Console.Write("Enter 1 for WPF, 2 for WinForms: ");
             string response = Console.ReadLine();
             if (!int.TryParse(response, out int responseInt))
@@ -23,23 +23,23 @@ namespace _01_VectorEditor
             switch (responseInt)
             {
                 case 1:
-                    factory = new WpfDrawingStrategyFactory();
+                    renderer = new WpfRenderer();
                     break;
                 case 2:
-                    factory = new WinFormsDrawingStrategyFactory();
+                    renderer = new WinFormsRenderer();
                     break;
                 default:
                     return;
             }
 
-            var image = new Image(factory);
+            var image = new Image(renderer);
             image.AddLineSegment(new Vector2(0, 0), new Vector2(2, 3));
             image.AddRectangle(new Vector2(-1, -1), new Vector2(5, 5));
             image.Draw();
 
             Console.WriteLine("Selecting shape at <0.8, 0.5>:");
             Shape shape = image.SelectShapeAt(new Vector2(0.8f, 0.5f));
-            shape.Draw();
+            shape.Draw(renderer);
 
             Console.WriteLine("Resizing this line to <0, 0>, <3, 4>, drawing image:");
             image.ResizeShape(shape, new Vector2(0, 0), new Vector2(3, 4));

@@ -5,16 +5,9 @@ namespace _01_VectorEditor.Primitives
 {
     public abstract class Shape
     {
-        private readonly AbstractDrawingStrategy drawingStrategy;
-
-        protected Shape(AbstractDrawingStrategy drawingStrategy)
+        public void Draw(AbstractRenderer renderer)
         {
-            this.drawingStrategy = drawingStrategy;
-        }
-
-        public void Draw()
-        {
-            drawingStrategy.Draw(this);
+            renderer.Render(this);
         }
 
         public abstract float GetDistanceFrom(Vector2 point);

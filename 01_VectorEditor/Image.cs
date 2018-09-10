@@ -9,11 +9,11 @@ namespace _01_VectorEditor
 {
     public class Image
     {
-        private AbstractDrawingStrategyFactory drawingFactory;
+        private readonly AbstractRenderer renderer;
 
-        public Image(AbstractDrawingStrategyFactory drawingFactory)
+        public Image(AbstractRenderer renderer)
         {
-            this.drawingFactory = drawingFactory;
+            this.renderer = renderer;
             Shapes = new List<Shape>();
         }
 
@@ -34,7 +34,7 @@ namespace _01_VectorEditor
         
         public void Draw()
         {
-            Shapes.ForEach(shape => shape.Draw());
+            Shapes.ForEach(shape => shape.Draw(renderer));
         }
 
         public Shape SelectShapeAt(Vector2 point)
@@ -59,14 +59,14 @@ namespace _01_VectorEditor
             }
         }
 
-        private LineSegment CreateSegment(Vector2 point1, Vector2 point2)
+        private static LineSegment CreateSegment(Vector2 point1, Vector2 point2)
         {
-            return new LineSegment(point1, point2, drawingFactory.LineSegmentDrawingStrategy());
+            return new LineSegment(point1, point2);
         }
 
-        private Rectangle CreateRectangle(Vector2 point1, Vector2 point2)
+        private static Rectangle CreateRectangle(Vector2 point1, Vector2 point2)
         {
-            return new Rectangle(point1, point2, drawingFactory.RectangleDrawingStrategy());
+            return new Rectangle(point1, point2);
         }
 
     }
