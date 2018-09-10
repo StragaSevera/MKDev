@@ -32,5 +32,10 @@ namespace _01_VectorEditor.Primitives
                 l => GeometricUtils.DistanceFromLineSegment(point, l.Item1, l.Item2)
             ).Min();
         }
+
+        public override void Draw(AbstractRenderer renderer)
+        {
+            renderer.Render(this);
+        }
     }
 }

@@ -19,5 +19,10 @@ namespace _01_VectorEditor.Primitives
         {
             return GeometricUtils.DistanceFromLineSegment(point, Point1, Point2);
         }
+
+        public override void Draw(AbstractRenderer renderer)
+        {
+            renderer.Render(this);
+        }
     }
 }
