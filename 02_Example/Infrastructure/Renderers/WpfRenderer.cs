@@ -1,4 +1,6 @@
 ﻿using System;
+using _02_Example.Infrastructure.Abstract;
+using _02_Example.Infrastructure.Shapes;
 
 namespace _02_Example.Infrastructure.Renderers
 {

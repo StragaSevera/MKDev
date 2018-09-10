@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _02_Example.Infrastructure.Abstract;
+using _02_Example.Infrastructure.Shapes;
 
-namespace _02_Example.Infrastructure
+namespace _02_Example.Infrastructure.Abstract
 {
     public abstract class AbstractRenderer
     {
