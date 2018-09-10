@@ -18,9 +18,9 @@ namespace _03_Calculus
             _strategy = strategy;
         }
         
-        public double Integrate(double a, double b, int segments = 100)
+        public double Integrate(double a, double b)
         {
-            return _strategy.Integrate(_f, a, b, segments);
+            return _strategy.Integrate(_f, a, b);
         }
 
         public override string ToString()

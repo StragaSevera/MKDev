@@ -13,16 +13,28 @@ namespace _03_Calculus
         {
             double F(double x) => x * x;
 
-            // Не очень красиво кортежами, но два параллельных массива еще менее красиво
+            Console.WriteLine($"Integrating x^2 from 0 to 3 with 100 segments:");
+            Console.WriteLine($"Analytical: 9");
             var integrators = new List<Integrator>
             {
-                new Integrator(F, new RectangleStrategy()),
-                new Integrator(F, new TrapezoidStrategy()),
-                new Integrator(F, new SimpsonStragegy())
+                new Integrator(F, new RectangleStrategy(100)),
+                new Integrator(F, new TrapezoidStrategy(100)),
+                new Integrator(F, new SimpsonStragegy(100))
             };
+            foreach (Integrator integrator in integrators)
+            {
+                Console.WriteLine($"{integrator}: {integrator.Integrate(0, 3)}");
+            }
 
-            Console.WriteLine($"Integrating x^2 from 0 to 3 with 100 steps:");
+            Console.WriteLine();
+            Console.WriteLine($"Integrating x^2 from 0 to 3 with step = 0.003:");
             Console.WriteLine($"Analytical: 9");
+            integrators = new List<Integrator>
+            {
+                new Integrator(F, new RectangleStrategy(0.003)),
+                new Integrator(F, new TrapezoidStrategy(0.003)),
+                new Integrator(F, new SimpsonStragegy(0.003))
+            };
             foreach (Integrator integrator in integrators)
             {
                 Console.WriteLine($"{integrator}: {integrator.Integrate(0, 3)}");
