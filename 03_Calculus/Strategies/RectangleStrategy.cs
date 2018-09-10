@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,9 @@ namespace _03_Calculus.Strategies
 
             for (int i = 0; i <= segments - 1; i++)
             {
-                sum += f(a + step * (i + 0.5));
+                double x = a + step * (i + 0.5);
+                Debug.Assert(x <= b);
+                sum += f(x);
             }
 
             return sum * step;

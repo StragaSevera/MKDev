@@ -39,6 +39,10 @@ namespace _03_Calculus
             {
                 Console.WriteLine($"{integrator}: {integrator.Integrate(0, 3)}");
             }
+
+            var a = 1d;
+            while (a > 0d) a -= 0.1d;
+            Console.WriteLine(a);
             Console.ReadLine();
         }
     }
