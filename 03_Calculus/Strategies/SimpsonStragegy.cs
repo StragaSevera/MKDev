@@ -30,5 +30,10 @@ namespace _03_Calculus.Strategies
 
             return sum * step / 3;
         }
+
+        public override string ToString()
+        {
+            return "Simpson strategy";
+        }
     }
 }

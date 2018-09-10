@@ -20,5 +20,10 @@ namespace _03_Calculus.Strategies
 
             return sum * step;
         }
+
+        public override string ToString()
+        {
+            return "Rectangle strategy";
+        }
     }
 }

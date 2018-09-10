@@ -9,18 +9,23 @@ namespace _03_Calculus
 {
     class Integrator
     {
-        private readonly Func<double, double> f;
-        private readonly IntegrationStrategy strategy;
+        private readonly Func<double, double> _f;
+        private readonly IntegrationStrategy _strategy;
 
         public Integrator(Func<double, double> f, IntegrationStrategy strategy)
         {
-            this.f = f;
-            this.strategy = strategy;
+            _f = f;
+            _strategy = strategy;
         }
         
         public double Integrate(double a, double b, int segments = 100)
         {
-            return strategy.Integrate(f, a, b, segments);
+            return _strategy.Integrate(_f, a, b, segments);
+        }
+
+        public override string ToString()
+        {
+            return _strategy.ToString();
         }
     }
 }
