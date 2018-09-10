@@ -8,6 +8,9 @@ namespace _03_Calculus
 {
     class Integrator
     {
+        public delegate double IntegrationFunction(Func<double, double> f,
+            double a, double step, double i, double segments);
+
         private Func<double, double> f;
 
         public Integrator(Func<double, double> f)
@@ -15,17 +18,32 @@ namespace _03_Calculus
             this.f = f;
         }
 
-        public double IntegrateByRectangles(double a, double b, int segments = 100)
+        public double IntegrateBy(double a, double b, IntegrationFunction integrationFunction,
+            int segments = 100)
         {
             double step = (b - a) / segments;
             double sum = 0;
 
             for (int i = 0; i <= segments - 1; i++)
             {
-                sum += f(a + step * (i + 0.5));
+                sum += integrationFunction(f, a, step, i, segments);
             }
 
             return sum * step;
+        }
+
+
+        public double IntegrateByRectangles(double a, double b, int segments = 100)
+        {
+            // Уродливый делегат, требует гораздо параметров, чем нужно ему, ибо другим стратегиям
+            // нужно будет количество сегментов или обе координаты отрезка
+            double Integration(Func<double, double> f,
+                double _a, double step, double i, double _segments)
+            {
+                return f(_a + step * (i + 0.5));
+            }
+
+            return IntegrateBy(a, b, Integration, segments);
         }
 
         public double IntegrateByTrapezoid(double a, double b, int segments = 100)
