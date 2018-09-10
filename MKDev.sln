@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01_VectorEditor", "01_Vecto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02_Example", "02_Example\02_Example.csproj", "{F6C8103B-7A7A-4273-B6B1-F724BBEF0E4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03_Calculus", "03_Calculus\03_Calculus.csproj", "{7166D2D6-A7A6-40DA-93CF-48AC94CB1E68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F6C8103B-7A7A-4273-B6B1-F724BBEF0E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6C8103B-7A7A-4273-B6B1-F724BBEF0E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6C8103B-7A7A-4273-B6B1-F724BBEF0E4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7166D2D6-A7A6-40DA-93CF-48AC94CB1E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7166D2D6-A7A6-40DA-93CF-48AC94CB1E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7166D2D6-A7A6-40DA-93CF-48AC94CB1E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7166D2D6-A7A6-40DA-93CF-48AC94CB1E68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
