@@ -16,6 +16,8 @@ namespace _03_Calculus
             Console.WriteLine($"Integrating x^2 from 0 to 3 with 100 steps:");
             Console.WriteLine($"Analytical: 9");
             Console.WriteLine($"Using rectangles: {integrator.IntegrateByRectangles(0, 3)}");
+            Console.WriteLine($"Using trapezoid: {integrator.IntegrateByTrapezoid(0, 3)}");
+            Console.WriteLine($"Using Simpson: {integrator.IntegrateBySimpson(0, 3)}");
             Console.ReadLine();
         }
     }
