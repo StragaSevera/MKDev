@@ -20,6 +20,16 @@ namespace _04_Calculator
             Console.WriteLine($"Value * 6: {calc.Value}");
             calc.Divide(4d);
             Console.WriteLine($"Value / 4: {calc.Value}");
+            calc.Undo();
+            Console.WriteLine($"Undo: {calc.Value}");
+            calc.Multiply(0d);
+            Console.WriteLine($"Value * 0: {calc.Value}");
+            calc.Subtract(5d);
+            Console.WriteLine($"Value - 5: {calc.Value}");
+            calc.Undo();
+            Console.WriteLine($"Undo: {calc.Value}");
+            calc.Undo();
+            Console.WriteLine($"Undo: {calc.Value}");
             Console.ReadLine();
         }
     }

@@ -43,6 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculator.cs" />
+    <Compile Include="Commands\DivideCommand.cs" />
+    <Compile Include="Commands\MultiplyCommand.cs" />
+    <Compile Include="Commands\SubtractCommand.cs" />
+    <Compile Include="Commands\AddCommand.cs" />
+    <Compile Include="Commands\CalculatorCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
