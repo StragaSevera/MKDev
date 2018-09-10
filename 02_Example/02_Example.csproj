@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\Abstract\AbstractRenderer.cs" />
+    <Compile Include="Infrastructure\Renderers\DirtyRenderer.cs" />
     <Compile Include="Infrastructure\Renderers\WinFormsRenderer.cs" />
     <Compile Include="Infrastructure\Shapes\Circle.cs" />
     <Compile Include="Infrastructure\Renderers\WpfRenderer.cs" />
