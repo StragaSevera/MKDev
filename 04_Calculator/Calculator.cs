@@ -8,15 +8,19 @@ namespace _04_Calculator
     {
         public double Value { get; private set; }
         private readonly Stack<CalculatorCommand> _commands;
+        private readonly Stack<CalculatorCommand> _undoneCommands;
+
 
         public Calculator(double value = 0d)
         {
             Value = value;
             _commands = new Stack<CalculatorCommand>();
+            _undoneCommands = new Stack<CalculatorCommand>();
         }
 
         public double ApplyCommand(CalculatorCommand command)
         {
+            _undoneCommands.Clear();
             _commands.Push(command);
             return Value = command.Apply(Value);
         }
@@ -24,7 +28,16 @@ namespace _04_Calculator
         public double Undo()
         {
             CalculatorCommand command = _commands.Pop();
+            _undoneCommands.Push(command);
             return Value = command.Unapply(Value);
+        }
+
+        public double Redo()
+        {
+            CalculatorCommand command = _undoneCommands.Pop();
+            // Можно вырефакторить в отдельный метод:
+            _commands.Push(command);
+            return Value = command.Apply(Value);
         }
 
         public double Add(double operand)
