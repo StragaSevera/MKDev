@@ -30,6 +30,8 @@ namespace _04_Calculator
             Console.WriteLine($"Undo: {calc.Value}");
             calc.Undo();
             Console.WriteLine($"Undo: {calc.Value}");
+            calc.Subtract(5d);
+            Console.WriteLine($"Value - 5: {calc.Value}");
             calc.Redo();
             Console.WriteLine($"Redo: {calc.Value}");
             Console.ReadLine();

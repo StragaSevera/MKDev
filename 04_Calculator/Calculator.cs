@@ -34,7 +34,12 @@ namespace _04_Calculator
 
         public double Redo()
         {
+            if (_undoneCommands.Count == 0)
+            {
+                throw new InvalidOperationException("You cannot redo when you have no undid commands!");
+            }
             CalculatorCommand command = _undoneCommands.Pop();
+            
             // Можно вырефакторить в отдельный метод:
             _commands.Push(command);
             return Value = command.Apply(Value);
