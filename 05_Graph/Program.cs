@@ -28,15 +28,27 @@ namespace _05_Graph
             Console.WriteLine($"First edge: {graph[0][0]}");
             Console.WriteLine($"Second edge: {graph[1][0]}");
 
-            var strategy = new DepthFirstTraversingStrategy<string, int>();
+            Console.WriteLine("\nUsing depth first strategy:");
+            TraversingStrategy<string, int> strategy = new DepthFirstTraversingStrategy<string, int>();
             strategy.VertexEnter += (o, i) =>
                 Console.WriteLine($"Reached vertex {i.Vertex} by #{i.Edge} edge");
             
             Console.WriteLine("Traversing from first vertex:");
             graph.Traverse(strategy, graph[0]);
 
-            Console.WriteLine("Traversing from fourth vertex:");
-            graph.Traverse(strategy, graph[3]);
+            Console.WriteLine("Traversing from second vertex:");
+            graph.Traverse(strategy, graph[1]);
+
+            Console.WriteLine("\nUsing breadth first strategy:");
+            strategy = new BreadthFirstTraversingStrategy<string, int>();
+            strategy.VertexEnter += (o, i) =>
+                Console.WriteLine($"Reached vertex {i.Vertex} by #{i.Edge} edge");
+
+            Console.WriteLine("Traversing from first vertex:");
+            graph.Traverse(strategy, graph[0]);
+
+            Console.WriteLine("Traversing from second vertex:");
+            graph.Traverse(strategy, graph[1]);
 
             Console.ReadLine();
         }
