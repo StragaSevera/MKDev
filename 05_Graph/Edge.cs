@@ -1,12 +1,13 @@
 ﻿namespace _05_Graph
 {
-    internal class Edge<T>
+    internal class Edge<TVertex, TEdge>
     {
-        public T Value { get; set; }
-        public Vertex<T> StartVertex { get; }
-        public Vertex<T> EndVertex { get; }
+        public TEdge Value { get; set; }
+        public Vertex<TVertex, TEdge> StartVertex { get; }
+        public Vertex<TVertex, TEdge> EndVertex { get; }
 
-        public Edge(Vertex<T> startVertex, Vertex<T> endVertex, T value = default(T))
+        public Edge(Vertex<TVertex, TEdge> startVertex, Vertex<TVertex, TEdge> endVertex,
+            TEdge value = default(TEdge))
         {
             Value = value;
             StartVertex = startVertex;

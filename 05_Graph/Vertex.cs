@@ -6,44 +6,79 @@ using System.Threading.Tasks;
 
 namespace _05_Graph
 {
-    internal class Vertex<T>
+    internal class Vertex<TVertex, TEdge>
     {
-        public T Value { get; set; }
-        public IList<Edge<T>> Edges { get; }
+        public TVertex Value { get; set; }
+        public List<Edge<TVertex, TEdge>> Edges { get; }
 
-        public Vertex(T value = default(T))
+        public Vertex(TVertex value = default(TVertex))
         {
             Value = value;
-            Edges = new List<Edge<T>>();
+            Edges = new List<Edge<TVertex, TEdge>>();
         }
 
-        public void AddEdge(Vertex<T> target, T edgeValue = default(T))
+        public Edge<TVertex, TEdge> this[int i] => Edges[i];
+
+        public void AddEdgeTo(Vertex<TVertex, TEdge> target, TEdge edgeValue = default(TEdge))
         {
-            var edge = new Edge<T>(this, target, edgeValue);
+            var edge = new Edge<TVertex, TEdge>(this, target, edgeValue);
             Edges.Add(edge);
         }
 
-        public void AddEdgeBidirectional(Vertex<T> target, T edgeValue = default(T))
+        public void AddEdgeToBidirectional(Vertex<TVertex, TEdge> target, 
+            TEdge edgeValue = default(TEdge))
         {
-            AddEdge(target, edgeValue);
-            target.AddEdge(this, edgeValue);
+            AddEdgeTo(target, edgeValue);
+            target.AddEdgeTo(this, edgeValue);
         }
 
-        public void RemoveEdge(Vertex<T> target)
+        public IEnumerable<Edge<TVertex, TEdge>> GetAllEdgesTo(Vertex<TVertex, TEdge> target)
         {
-            var edge = Edges.FirstOrDefault(e => e.EndVertex == target);
+            return Edges.Where(e => e.EndVertex == target);
+        }
+
+        public Edge<TVertex, TEdge> GetEdgeTo(Vertex<TVertex, TEdge> target)
+        {
+            return GetAllEdgesTo(target).FirstOrDefault(e => e.EndVertex == target);
+        }
+
+
+        public bool HasEdgeTo(Vertex<TVertex, TEdge> target)
+        {
+            return GetEdgeTo(target) != null;
+        }
+
+        public void RemoveEdge(Edge<TVertex, TEdge> targetEdge)
+        {
+            Edges.Remove(targetEdge);
+        }
+
+        public void RemoveEdgeTo(Vertex<TVertex, TEdge> target)
+        {
+            var edge = GetEdgeTo(target);
             if (edge == null)
             {
-                throw new ArgumentException("Trying to remove an edge which do not exist");
+                throw new ArgumentException("Trying to remove an edge which do not exist in graph!");
             }
 
-            Edges.Remove(edge);
+            RemoveEdge(edge);
         }
 
-        public void RemoveEdgeBidirectional(Vertex<T> target)
+        public void RemoveEdgeToBidirectional(Vertex<TVertex, TEdge> target)
         {
-            RemoveEdge(target);
-            target.RemoveEdge(this);
+            RemoveEdgeTo(target);
+            target.RemoveEdgeTo(this);
+        }
+
+        public void RemoveAllEdgesTo(Vertex<TVertex, TEdge> target)
+        {
+            var targetEdges = GetAllEdgesTo(target);
+            Edges.RemoveAll(targetEdges.Contains);
+        }
+
+        public void ClearEdges()
+        {
+            Edges.Clear();
         }
     }
 }
