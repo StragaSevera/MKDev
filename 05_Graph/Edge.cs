@@ -13,5 +13,10 @@
             StartVertex = startVertex;
             EndVertex = endVertex;
         }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }

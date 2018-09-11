@@ -80,5 +80,10 @@ namespace _05_Graph
         {
             Edges.Clear();
         }
+
+        public override string ToString()
+        {
+            return Value.ToString();
+        }
     }
 }

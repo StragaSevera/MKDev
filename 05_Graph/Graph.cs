@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _05_Graph.TraversingStrategies;
 
 namespace _05_Graph
 {
@@ -40,5 +41,10 @@ namespace _05_Graph
             Vertices.Remove(vertex);
         }
 
+        public void Traverse(TraversingStrategy<TVertex, TEdge> strategy,
+            Vertex<TVertex, TEdge> start)
+        {
+            strategy.Traverse(this, start);
+        }
     }
 }
