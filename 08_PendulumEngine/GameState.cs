@@ -10,17 +10,20 @@ namespace _08_PendulumEngine
     public class GameState
     {
         public Pendulum Pendulum { get; private set; }
-        private float _dpi;
+        public Spiral Spiral { get; private set; }
+        private readonly float _dpi;
 
         public GameState(float dpi)
         {
             _dpi = dpi;
             Pendulum = new Pendulum(300, Math.PI / 4d, new Vector2(350, 10), _dpi);
+            Spiral = new Spiral(20, 0, new Vector2(350, 350));
         }
 
         public void Tick(int timeElapsed)
         {
             Pendulum.Tick(timeElapsed);
+            Spiral.Tick(timeElapsed);
         }
 
         public void HandleEvent(InputEvent inputEvent)
