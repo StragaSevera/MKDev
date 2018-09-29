@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06_Database", "06_Database\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07_Singleton", "07_Singleton\07_Singleton.csproj", "{5ECA2B79-CBD4-4B8E-B0A3-6F39E08DF988}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08_PendulumWinForms", "08_PendulumWinForms\08_PendulumWinForms.csproj", "{D79C5FBE-40D1-4955-A465-F83BFFF15648}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08_PendulumEngine", "08_PendulumEngine\08_PendulumEngine.csproj", "{076514D7-8CF4-4E99-B9CF-F826546FBE58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{5ECA2B79-CBD4-4B8E-B0A3-6F39E08DF988}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ECA2B79-CBD4-4B8E-B0A3-6F39E08DF988}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ECA2B79-CBD4-4B8E-B0A3-6F39E08DF988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D79C5FBE-40D1-4955-A465-F83BFFF15648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D79C5FBE-40D1-4955-A465-F83BFFF15648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D79C5FBE-40D1-4955-A465-F83BFFF15648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D79C5FBE-40D1-4955-A465-F83BFFF15648}.Release|Any CPU.Build.0 = Release|Any CPU
+		{076514D7-8CF4-4E99-B9CF-F826546FBE58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{076514D7-8CF4-4E99-B9CF-F826546FBE58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{076514D7-8CF4-4E99-B9CF-F826546FBE58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{076514D7-8CF4-4E99-B9CF-F826546FBE58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
