@@ -26,6 +26,13 @@ namespace _08_PendulumEngine
             _dpi = dpi;
         }
 
+        public static Pendulum InitFromPoint(Vector2 point, Vector2 pivot, float dpi)
+        {
+            int distance = (int)Math.Round(Vector2.Distance(point, pivot));
+            double angle = Math.Atan2(point.X - pivot.X, point.Y - pivot.Y);
+            return new Pendulum(distance, angle, pivot, dpi);
+        }
+       
 
         public void Tick(int timeElapsed)
         {

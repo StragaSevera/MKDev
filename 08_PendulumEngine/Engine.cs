@@ -13,11 +13,13 @@ namespace _08_PendulumEngine
         private readonly GameState _state;
         private Timer _timer;
         private long _lastTickTime;
+        private readonly List<InputEvent> _inputEvents;
 
         public Engine(IRenderer renderer, float dpi)
         {
             _renderer = renderer;
             _state = new GameState(dpi);
+            _inputEvents = new List<InputEvent>();
         }
 
         public void Start()
@@ -31,12 +33,20 @@ namespace _08_PendulumEngine
             _timer.Dispose();
         }
 
-        public void Tick(object _)
+        public void AddInputEvent(InputEvent inputEvent)
+        {
+            _inputEvents.Add(inputEvent);
+        }
+
+        private void Tick(object _)
         {
             // Вычисляем, сколько прошло времени на самом деле
             long currentTickTime = TimeInMs();
             int timeElapsed = (int)(currentTickTime - _lastTickTime);
             _lastTickTime = currentTickTime;
+
+            _inputEvents.ForEach(e => _state.HandleEvent(e));
+            _inputEvents.Clear();
 
             _state.Tick(timeElapsed);
             _renderer.Render(_state);

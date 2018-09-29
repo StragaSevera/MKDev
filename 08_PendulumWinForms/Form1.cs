@@ -32,5 +32,11 @@ namespace _08_PendulumWinForms
             _engine = new Engine(_renderer, dpi);
             _engine.Start();
         }
+
+        private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            var inputEvent = new MovePendulumInputEvent(e.X, e.Y);
+            _engine.AddInputEvent(inputEvent);
+        }
     }
 }
