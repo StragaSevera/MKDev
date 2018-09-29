@@ -32,6 +32,7 @@ namespace _08_PendulumWinForms
                 g.DrawEllipse(Pens.Black, new RectangleF(point - new SizeF(10, 10), new SizeF(20, 20)));
                 Picture.CreateGraphics().DrawImageUnscaled(bitmap, 0, 0);
             }
+            bitmap.Dispose();
         }
     }
 }
