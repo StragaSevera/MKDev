@@ -16,7 +16,7 @@ namespace _08_PendulumEngine.Events
         {
         }
 
-        public override void VisitEntity(IEntity entity)
+        public override void VisitEntity(Entity entity)
         {
         }
 

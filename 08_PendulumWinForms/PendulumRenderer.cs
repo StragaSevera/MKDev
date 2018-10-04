@@ -11,9 +11,9 @@ namespace _08_PendulumWinForms
         {
         }
 
-        protected override void RenderGraphics(GameState state, Graphics g)
+        protected override void Render(Entity entity, Graphics g)
         {
-            var pendulum = (Pendulum) state.Entities[0];
+            var pendulum = (Pendulum) entity;
 
             DrawLine(g, pendulum.Pivot, pendulum.Point);
             g.DrawEllipse(Pens.Black, new RectangleF(

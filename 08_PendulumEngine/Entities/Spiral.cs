@@ -6,7 +6,7 @@ using _08_PendulumEngine.Events;
 
 namespace _08_PendulumEngine.Entities
 {
-    public class Spiral : IEntity
+    public class Spiral : Entity
     {
         public int Length { get; private set; }
         public double StartingAngle { get; }
@@ -26,7 +26,7 @@ namespace _08_PendulumEngine.Entities
             ComputePoints();
         }
 
-        public void Tick(int timeElapsed)
+        public override void Process(int timeElapsed)
         {
             double timeCoefficient = 1000d / timeElapsed;
             Angle += timeCoefficient * Math.PI / (180 * 4);
@@ -34,7 +34,7 @@ namespace _08_PendulumEngine.Entities
             Points = _newPoints.ToList();
         }
 
-        public void HandleInputEvent(InputEvent inputEvent)
+        public override void HandleInputEvent(InputEvent inputEvent)
         {
             inputEvent.VisitEntity(this);
         }

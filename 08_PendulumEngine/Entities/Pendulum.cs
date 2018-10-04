@@ -4,7 +4,7 @@ using _08_PendulumEngine.Events;
 
 namespace _08_PendulumEngine.Entities
 {
-    public class Pendulum : IEntity
+    public class Pendulum : Entity
     {
         public int Length { get; private set; }
         public double StartingAngle { get; private set; }
@@ -28,17 +28,17 @@ namespace _08_PendulumEngine.Entities
         }
 
 
-        public void Tick(int timeElapsed)
+        public override void Process(int timeElapsed)
         {
             _timeFromStart += timeElapsed;
             Angle = StartingAngle * Math.Cos(Omega() * _timeFromStart / 1000);
         }
 
-        public void HandleInputEvent(InputEvent inputEvent)
+        public override void HandleInputEvent(InputEvent inputEvent)
         {
             inputEvent.VisitEntity(this);
         }
-
+        
         public void HandleInputEvent(MoveInputEvent inputEvent)
         {
             InitFromPoint(inputEvent.Position);

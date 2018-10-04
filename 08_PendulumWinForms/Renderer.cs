@@ -11,7 +11,7 @@ using _08_PendulumEngine.Entities;
 
 namespace _08_PendulumWinForms
 {
-    internal abstract class Renderer : IRenderer
+    internal abstract class Renderer
     {
         public PictureBox Picture { get; set; }
 
@@ -20,20 +20,25 @@ namespace _08_PendulumWinForms
             Picture = picture;
         }
 
-        public void Render(GameState state)
+        public void SubscribeToEntity(Entity entity)
+        {
+            entity.EntityTick += OnEntityTick;
+        }
+
+        public void OnEntityTick(object sender, EventArgs eventArgs)
         {
             using (var bitmap = new Bitmap(Picture.Width, Picture.Height))
             {
                 using (Graphics g = Graphics.FromImage(bitmap))
                 {
                     g.FillRectangle(Brushes.White, new Rectangle(0, 0, Picture.Width, Picture.Height));
-                    RenderGraphics(state, g);
+                    Render((Entity) sender, g);
                     Picture.CreateGraphics().DrawImageUnscaled(bitmap, 0, 0);
                 }
             }
         }
 
-        protected abstract void RenderGraphics(GameState state, Graphics g);
+        protected abstract void Render(Entity entity, Graphics g);
 
         protected static PointF VectorToPoint(Vector2 vector)
         {

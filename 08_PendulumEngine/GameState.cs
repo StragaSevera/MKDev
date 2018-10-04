@@ -11,7 +11,7 @@ namespace _08_PendulumEngine
 {
     public class GameState
     {
-        public List<IEntity> Entities { get; } = new List<IEntity>();
+        public List<Entity> Entities { get; } = new List<Entity>();
 
         public GameState(float dpi)
         {

@@ -5,21 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using _08_PendulumEngine.Entities;
 using _08_PendulumEngine.Events;
 
 namespace _08_PendulumEngine
 {
     public class Engine
     {
-        private readonly IRenderer _renderer;
         private readonly GameState _state;
         private Timer _timer;
         private long _lastTickTime;
         private readonly List<InputEvent> _inputEvents;
 
-        public Engine(IRenderer renderer, float dpi)
+        public List<Entity> Entities => _state.Entities;
+
+        public Engine(float dpi)
         {
-            _renderer = renderer;
             _state = new GameState(dpi);
             _inputEvents = new List<InputEvent>();
         }
@@ -51,7 +52,6 @@ namespace _08_PendulumEngine
             _inputEvents.Clear();
 
             _state.Tick(timeElapsed);
-            _renderer.Render(_state);
         }
 
         private static long TimeInMs()

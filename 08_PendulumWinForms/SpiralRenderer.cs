@@ -12,9 +12,9 @@ namespace _08_PendulumWinForms
         {
         }
 
-        protected override void RenderGraphics(GameState state, Graphics g)
+        protected override void Render(Entity entity, Graphics g)
         {
-            var spiral = (Spiral) state.Entities[1];
+            var spiral = (Spiral) entity;
 
             Vector2 lastPoint = spiral.Pivot;
             var points = spiral.Points;
