@@ -44,12 +44,13 @@
   <ItemGroup>
     <Compile Include="Engine.cs" />
     <Compile Include="GameState.cs" />
-    <Compile Include="InputEvent.cs" />
-    <Compile Include="MovePendulumInputEvent.cs" />
+    <Compile Include="Entities\IEntity.cs" />
+    <Compile Include="Events\InputEvent.cs" />
+    <Compile Include="Events\MoveInputEvent.cs" />
     <Compile Include="IRenderer.cs" />
-    <Compile Include="Pendulum.cs" />
+    <Compile Include="Entities\Pendulum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Spiral.cs" />
+    <Compile Include="Entities\Spiral.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

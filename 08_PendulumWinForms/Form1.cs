@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using _08_PendulumEngine;
+using _08_PendulumEngine.Events;
 
 namespace _08_PendulumWinForms
 {
@@ -35,7 +36,7 @@ namespace _08_PendulumWinForms
 
         private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            var inputEvent = new MovePendulumInputEvent(e.X, e.Y);
+            var inputEvent = new MoveInputEvent(e.X, e.Y);
             _engine.AddInputEvent(inputEvent);
         }
     }

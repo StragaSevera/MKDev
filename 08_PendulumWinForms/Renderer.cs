@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using _08_PendulumEngine;
+using _08_PendulumEngine.Entities;
 
 namespace _08_PendulumWinForms
 {
@@ -25,7 +26,7 @@ namespace _08_PendulumWinForms
             using (Graphics g = Graphics.FromImage(bitmap))
             {
                 g.FillRectangle(Brushes.White, new Rectangle(0, 0, Picture.Width, Picture.Height));
-                //                RenderPendulum(state, g);
+//                RenderPendulum(state, g);
                 RenderSpiral(state, g);
                 Picture.CreateGraphics().DrawImageUnscaled(bitmap, 0, 0);
             }
@@ -34,7 +35,7 @@ namespace _08_PendulumWinForms
 
         private static void RenderSpiral(GameState state, Graphics g)
         {
-            Spiral spiral = state.Spiral;
+            var spiral = (Spiral) state.Entities[1];
 
             Vector2 lastPoint = spiral.Pivot;
             var points = spiral.Points;
@@ -47,7 +48,7 @@ namespace _08_PendulumWinForms
 
         private static void RenderPendulum(GameState state, Graphics g)
         {
-            Pendulum pendulum = state.Pendulum;
+            var pendulum = (Pendulum) state.Entities[0];
 
             DrawLine(g, pendulum.Pivot, pendulum.Point);
             g.DrawEllipse(Pens.Black, new RectangleF(VectorToPoint(pendulum.Point) - new SizeF(10, 10), new SizeF(20, 20)));

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Numerics;
+using _08_PendulumEngine.Events;
 
-namespace _08_PendulumEngine
+namespace _08_PendulumEngine.Entities
 {
-    public class Pendulum
+    public class Pendulum : IEntity
     {
-        public int Length { get; }
-        public double StartingAngle { get; }
+        public int Length { get; private set; }
+        public double StartingAngle { get; private set; }
         public Vector2 Pivot { get; }
         public double Angle { get; private set; }
 
@@ -26,18 +27,21 @@ namespace _08_PendulumEngine
             _dpi = dpi;
         }
 
-        public static Pendulum InitFromPoint(Vector2 point, Vector2 pivot, float dpi)
-        {
-            int distance = (int)Math.Round(Vector2.Distance(point, pivot));
-            double angle = Math.Atan2(point.X - pivot.X, point.Y - pivot.Y);
-            return new Pendulum(distance, angle, pivot, dpi);
-        }
-       
 
         public void Tick(int timeElapsed)
         {
             _timeFromStart += timeElapsed;
             Angle = StartingAngle * Math.Cos(Omega() * _timeFromStart / 1000);
+        }
+
+        public void HandleInputEvent(InputEvent inputEvent)
+        {
+            inputEvent.VisitEntity(this);
+        }
+
+        public void HandleInputEvent(MoveInputEvent inputEvent)
+        {
+            InitFromPoint(inputEvent.Position);
         }
 
         private double Omega()
@@ -48,6 +52,13 @@ namespace _08_PendulumEngine
         private double LengthMetric()
         {
             return Length / (_dpi * 2.54);
+        }
+
+        private void InitFromPoint(Vector2 point)
+        {
+            Length = (int) Math.Round(Vector2.Distance(point, Pivot));
+            Angle = StartingAngle = Math.Atan2(point.X - Pivot.X, point.Y - Pivot.Y);
+            _timeFromStart = 0;
         }
     }
 }

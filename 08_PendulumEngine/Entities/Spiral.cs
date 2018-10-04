@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
+using _08_PendulumEngine.Events;
 
-namespace _08_PendulumEngine
+namespace _08_PendulumEngine.Entities
 {
-    public class Spiral
+    public class Spiral : IEntity
     {
-        public int Length { get; }
+        public int Length { get; private set; }
         public double StartingAngle { get; }
         public Vector2 Pivot { get; }
 
@@ -35,10 +34,20 @@ namespace _08_PendulumEngine
             Points = _newPoints.ToList();
         }
 
+        public void HandleInputEvent(InputEvent inputEvent)
+        {
+            inputEvent.VisitEntity(this);
+        }
+
+        public void HandleInputEvent(MoveInputEvent inputEvent)
+        {
+            Length = (int) Vector2.Distance(inputEvent.Position, Pivot);
+        }
+
         private void ComputePoints()
         {
             _newPoints.Clear();
-            for (double phi = 0; phi <= 32 * Math.PI + 0; phi += Math.PI / 180)
+            for (double phi = 0; phi <= 64 * Math.PI; phi += Math.PI / 180)
             {
                 double r = PhiCoefficient() * phi;
                 Vector2 point = new Vector2(
