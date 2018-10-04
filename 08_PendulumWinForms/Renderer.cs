@@ -11,55 +11,36 @@ using _08_PendulumEngine.Entities;
 
 namespace _08_PendulumWinForms
 {
-    internal class Renderer : IRenderer
+    internal abstract class Renderer : IRenderer
     {
         public PictureBox Picture { get; set; }
 
-        public Renderer(PictureBox picture)
+        protected Renderer(PictureBox picture)
         {
             Picture = picture;
         }
 
         public void Render(GameState state)
         {
-            var bitmap = new Bitmap(Picture.Width, Picture.Height);
-            using (Graphics g = Graphics.FromImage(bitmap))
+            using (var bitmap = new Bitmap(Picture.Width, Picture.Height))
             {
-                g.FillRectangle(Brushes.White, new Rectangle(0, 0, Picture.Width, Picture.Height));
-//                RenderPendulum(state, g);
-                RenderSpiral(state, g);
-                Picture.CreateGraphics().DrawImageUnscaled(bitmap, 0, 0);
-            }
-            bitmap.Dispose();
-        }
-
-        private static void RenderSpiral(GameState state, Graphics g)
-        {
-            var spiral = (Spiral) state.Entities[1];
-
-            Vector2 lastPoint = spiral.Pivot;
-            var points = spiral.Points;
-            foreach (Vector2 point in points)
-            {
-                DrawLine(g, lastPoint, point);
-                lastPoint = point;
+                using (Graphics g = Graphics.FromImage(bitmap))
+                {
+                    g.FillRectangle(Brushes.White, new Rectangle(0, 0, Picture.Width, Picture.Height));
+                    RenderGraphics(state, g);
+                    Picture.CreateGraphics().DrawImageUnscaled(bitmap, 0, 0);
+                }
             }
         }
 
-        private static void RenderPendulum(GameState state, Graphics g)
-        {
-            var pendulum = (Pendulum) state.Entities[0];
+        protected abstract void RenderGraphics(GameState state, Graphics g);
 
-            DrawLine(g, pendulum.Pivot, pendulum.Point);
-            g.DrawEllipse(Pens.Black, new RectangleF(VectorToPoint(pendulum.Point) - new SizeF(10, 10), new SizeF(20, 20)));
-        }
-
-        private static PointF VectorToPoint(Vector2 vector)
+        protected static PointF VectorToPoint(Vector2 vector)
         {
             return new PointF(vector.X, vector.Y);
         }
 
-        private static void DrawLine(Graphics g, Vector2 point1, Vector2 point2)
+        protected static void DrawLine(Graphics g, Vector2 point1, Vector2 point2)
         {
             g.DrawLine(Pens.Black, VectorToPoint(point1), VectorToPoint(point2));
         }

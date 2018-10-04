@@ -16,7 +16,7 @@ namespace _08_PendulumWinForms
     {
         private Renderer _renderer;
         private Engine _engine;
-        
+
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +28,16 @@ namespace _08_PendulumWinForms
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 
-            _renderer = new Renderer(pictureBox1);
+            DialogResult dialogResult = MessageBox.Show("Render pendulum (yes) or spiral (no)?",
+                "Rendering", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+                _renderer = new PendulumRenderer(pictureBox1);
+            else
+            {
+                _renderer = new SpiralRenderer(pictureBox1);
+            }
+
             float dpi = pictureBox1.CreateGraphics().DpiX;
             _engine = new Engine(_renderer, dpi);
             _engine.Start();
