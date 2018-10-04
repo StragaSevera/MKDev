@@ -14,7 +14,8 @@ namespace _08_PendulumEngine
         public Vector2 Pivot { get; }
 
         public double Angle { get; private set; }
-        public List<Vector2> Points { get; }
+        public List<Vector2> Points { get; private set; }
+        private readonly List<Vector2> _newPoints;
 
         public Spiral(int length, double startingAngle, Vector2 pivot)
         {
@@ -22,6 +23,7 @@ namespace _08_PendulumEngine
             Angle = StartingAngle = startingAngle;
             Pivot = pivot;
             Points = new List<Vector2>();
+            _newPoints = new List<Vector2>();
             ComputePoints();
         }
 
@@ -30,11 +32,12 @@ namespace _08_PendulumEngine
             double timeCoefficient = 1000d / timeElapsed;
             Angle += timeCoefficient * Math.PI / (180 * 4);
             ComputePoints();
+            Points = _newPoints.ToList();
         }
 
         private void ComputePoints()
         {
-            Points.Clear();
+            _newPoints.Clear();
             for (double phi = 0; phi <= 32 * Math.PI + 0; phi += Math.PI / 180)
             {
                 double r = PhiCoefficient() * phi;
@@ -42,7 +45,7 @@ namespace _08_PendulumEngine
                     (float) (r * Math.Sin(phi + Angle)),
                     (float) (r * Math.Cos(phi + Angle))
                 ) + Pivot;
-                Points.Add(point);
+                _newPoints.Add(point);
             }
         }
 

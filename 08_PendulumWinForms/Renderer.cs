@@ -36,11 +36,12 @@ namespace _08_PendulumWinForms
         {
             Spiral spiral = state.Spiral;
 
-            DrawLine(g, spiral.Pivot, spiral.Points[0]);
-
-            for (int i = 1; i < spiral.Points.Count; i++)
+            Vector2 lastPoint = spiral.Pivot;
+            var points = spiral.Points;
+            foreach (Vector2 point in points)
             {
-                DrawLine(g, spiral.Points[i - 1], spiral.Points[i]);
+                DrawLine(g, lastPoint, point);
+                lastPoint = point;
             }
         }
 
